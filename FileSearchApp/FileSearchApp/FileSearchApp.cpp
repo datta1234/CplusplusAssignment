@@ -4,6 +4,7 @@
 #include <iostream>
 #include <filesystem>
 #include <string>
+
 using namespace std;
 namespace fs = std::filesystem;
 
@@ -71,7 +72,9 @@ int main(int argc, char* argv[]) {
 
 	string folderPaths = argv[1];
 	string serachText = argv[2];
-	bool isSearchInSub = argv[3];
+	string inSubString = argv[3];
+	transform(inSubString.begin(), inSubString.end(), inSubString.begin(), ::tolower);
+	bool isSearchInSub = (inSubString == "true" || inSubString == "1")? 1: 0;
 	bool isParamProvided = false;
 	vector<string> vFolderpaths;
 
