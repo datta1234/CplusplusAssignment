@@ -42,6 +42,7 @@ void searchFiles(string filePath, string searchText, bool isSearchInSub)
 	{
 		for (auto& p : fs::recursive_directory_iterator(filePath))
 		{
+			if (!p.is_directory())
 			serachTextInFile(p.path(), searchText);
 		}
 	}
@@ -49,7 +50,10 @@ void searchFiles(string filePath, string searchText, bool isSearchInSub)
 	{
 		for (auto& p : fs::directory_iterator(filePath))
 		{
+			if (!p.is_directory())
 			serachTextInFile(p.path(), searchText);
+			
+			
 		}
 	}
 }
